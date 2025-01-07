@@ -29,6 +29,8 @@ defmodule JesusthroughmaryWeb.Router do
     live "/apparitions/laus", ApparitionLive.Laus, :show
     live "/apparitions/lourdes", ApparitionLive.Lourdes, :show
     live "/apparitions/miraculous_medal", ApparitionLive.MiraculousMedal, :show
+
+    live "/rosary", RosaryLive.Home, :index
   end
 
   # Other scopes may use custom stacks.
