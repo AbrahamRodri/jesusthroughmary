@@ -1,0 +1,37 @@
+<div class="max-w-4xl mx-auto py-8 px-4">
+  <h1 class="text-3xl font-bold mb-8">Marian Apparitions</h1>
+
+  <form phx-change="search" class="mb-8">
+    <input
+      type="text"
+      name="query"
+      value={@search_query}
+      placeholder="Search apparitions..."
+      class="w-full p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500"
+    />
+  </form>
+
+  <div class="grid gap-6">
+    <%= for apparition <- @filtered_apparitions do %>
+      <.link
+        navigate={~p"/apparitions/#{apparition.id}"}
+        class="block p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow"
+      >
+        <div class="flex items-start gap-4">
+          <img
+            src={apparition.image_url}
+            alt={apparition.title}
+            class="w-24 h-24 object-cover rounded"
+          />
+          <div>
+            <h2 class="text-xl font-semibold mb-2">{apparition.title}</h2>
+            <p class="text-gray-600 mb-2">
+              {apparition.location} • {Calendar.strftime(apparition.date, "%B %d, %Y")}
+            </p>
+            <p class="text-gray-700">{apparition.description}</p>
+          </div>
+        </div>
+      </.link>
+    <% end %>
+  </div>
+</div>

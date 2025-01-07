@@ -18,6 +18,8 @@ defmodule JesusthroughmaryWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/apparitions", ApparitionLive.Index, :index
+    live "/apparitions/:id", ApparitionLive.Show, :show
   end
 
   # Other scopes may use custom stacks.
