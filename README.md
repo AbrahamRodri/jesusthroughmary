@@ -23,7 +23,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-github-username/jesus-through-mary.git
+   git clone https://github.com/AbrahamRodri/jesusthroughmary.git
    
    cd jesus-through-mary
    
