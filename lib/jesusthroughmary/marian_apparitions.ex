@@ -49,7 +49,7 @@ defmodule Jesusthroughmary.MarianApparitions do
       location: "Pontmain, France",
       description:
         "Mary appeared during the Franco-Prussian War, bringing hope to the people of Pontmain.",
-      image_url: "/images/pontmain.webp"
+      image_url: "/images/hope.webp"
     },
     %{
       id: "knock",

@@ -8,45 +8,31 @@ defmodule JesusthroughmaryWeb.ApparitionLive.MiraculousMedal do
   def render(assigns) do
     ~H"""
     <div class="max-w-4xl mx-auto py-8 px-4">
-      <h1 class="text-3xl font-bold mb-8">Our Lady of Fatima</h1>
-
+      <h1 class="text-3xl font-bold mb-8">Our Lady of the Miraculous Medal</h1>
       <div class="grid gap-6">
         <div class="block p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
           <div class="flex items-start gap-4">
             <img
-              src="/images/fatima.webp"
-              alt="Our Lady of Fatima"
+              src="/images/miraculous_medal.webp"
+              alt="Our Lady of the Miraculous Medal"
               class="w-48 h-48 object-cover rounded"
             />
             <div>
               <h2 class="text-xl font-semibold mb-4">Apparition Details</h2>
               <p class="text-gray-600 mb-4">
-                Location: Fatima, Portugal <br /> Date: May 13, 1917
+                Location: Rue de Bac, Paris, France <br /> Date: July 18, 1830
               </p>
               <p class="text-gray-700 mb-4">
-                Our Lady of Fatima is one of the most well-known Marian apparitions. In 1917, the
-                Virgin Mary appeared to three shepherd children in Fatima, Portugal. Over a series
-                of apparitions, she shared messages calling for prayer, penance, and devotion.
-              </p>
-              <p class="text-gray-700 mb-4">
-                The apparition culminated with the Miracle of the Sun, witnessed by tens of
-                thousands of people, which affirmed the authenticity of the messages and left a
-                lasting impact on the Catholic Church.
+                Mary appeared to St. Catherine Labouré, revealing the design for the Miraculous Medal
+                and emphasizing the graces it would bring to those who wear it with faith.
               </p>
             </div>
           </div>
         </div>
-
         <div class="block p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-          <h2 class="text-xl font-semibold mb-4">The Legacy of Fatima</h2>
+          <h2 class="text-xl font-semibold mb-4">The Legacy of the Miraculous Medal</h2>
           <p class="text-gray-700 mb-4">
-            The message of Fatima continues to inspire millions around the world, reminding us of
-            the importance of prayer, conversion, and trusting in God's divine plan. The site of
-            the apparition is now a major pilgrimage destination, attracting visitors from all
-            over the globe.
-          </p>
-          <p class="text-gray-700">
-            Join us in reflecting on the message of Fatima and seeking intercession through the
+            Millions around the world wear the Miraculous Medal as a sign of faith and devotion to the
             Blessed Virgin Mary.
           </p>
         </div>
