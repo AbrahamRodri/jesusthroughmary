@@ -43,7 +43,7 @@ defmodule Jesusthroughmary.MarianApparitions do
       image_url: "/images/lourdes.webp"
     },
     %{
-      id: "pontmain",
+      id: "hope",
       title: "Our Lady of Hope of Pontmain",
       date: ~D[1871-01-17],
       location: "Pontmain, France",

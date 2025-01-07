@@ -1,4 +1,4 @@
-defmodule JesusthroughmaryWeb.ApparitionLive.Fatima do
+defmodule JesusthroughmaryWeb.ApparitionLive.Lourdes do
   use JesusthroughmaryWeb, :live_view
 
   def mount(_params, _session, socket) do

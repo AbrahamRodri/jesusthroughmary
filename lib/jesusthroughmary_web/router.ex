@@ -19,7 +19,16 @@ defmodule JesusthroughmaryWeb.Router do
 
     get "/", PageController, :home
     live "/apparitions", ApparitionLive.Index, :index
+    live "/apparitions/banneux", ApparitionLive.Banneux, :show
+    live "/apparitions/beauraing", ApparitionLive.Beauraing, :show
     live "/apparitions/fatima", ApparitionLive.Fatima, :show
+    live "/apparitions/guadalupe", ApparitionLive.Guadalupe, :show
+    live "/apparitions/hope", ApparitionLive.Hope, :show
+    live "/apparitions/knock", ApparitionLive.Knock, :show
+    live "/apparitions/la_salette", ApparitionLive.LaSalette, :show
+    live "/apparitions/laus", ApparitionLive.Laus, :show
+    live "/apparitions/lourdes", ApparitionLive.Lourdes, :show
+    live "/apparitions/miraculous_medal", ApparitionLive.MiraculousMedal, :show
   end
 
   # Other scopes may use custom stacks.
