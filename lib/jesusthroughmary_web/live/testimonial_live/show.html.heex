@@ -1,0 +1,29 @@
+<.header>
+  Testimonial {@testimonial.id}
+  <:subtitle>This is a testimonial record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/testimonials/#{@testimonial}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit testimonial</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Title">{@testimonial.title}</:item>
+  <:item title="Message">{@testimonial.message}</:item>
+  <:item title="Likes">{@testimonial.likes}</:item>
+  <:item title="Date">{@testimonial.date}</:item>
+</.list>
+
+<.back navigate={~p"/testimonials"}>Back to testimonials</.back>
+
+<.modal :if={@live_action == :edit} id="testimonial-modal" show on_cancel={JS.patch(~p"/testimonials/#{@testimonial}")}>
+  <.live_component
+    module={JesusthroughmaryWeb.TestimonialLive.FormComponent}
+    id={@testimonial.id}
+    title={@page_title}
+    action={@live_action}
+    testimonial={@testimonial}
+    patch={~p"/testimonials/#{@testimonial}"}
+  />
+</.modal>
