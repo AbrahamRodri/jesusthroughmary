@@ -49,9 +49,9 @@ defmodule Jesusthroughmary.Testimonials do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_testimonial(attrs \\ %{}) do
+  def create_testimonial(attrs \\ %{}, user_id) do
     %Testimonial{}
-    |> Testimonial.changeset(attrs)
+    |> Testimonial.changeset(Map.put(attrs, "user_id", user_id))
     |> Repo.insert()
   end
 
