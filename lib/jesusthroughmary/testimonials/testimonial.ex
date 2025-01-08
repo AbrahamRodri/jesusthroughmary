@@ -20,7 +20,7 @@ defmodule Jesusthroughmary.Testimonials.Testimonial do
   @doc false
   def changeset(testimonial, attrs) do
     testimonial
-    |> cast(attrs, [:title, :message, :likes, :date])
-    |> validate_required([:title, :message, :likes, :date])
+    |> cast(attrs, [:title, :message, :likes, :date, :user_id])
+    |> validate_required([:title, :message, :user_id])
   end
 end

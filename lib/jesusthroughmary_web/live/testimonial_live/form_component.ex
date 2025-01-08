@@ -67,7 +67,9 @@ defmodule JesusthroughmaryWeb.TestimonialLive.FormComponent do
   end
 
   defp save_testimonial(socket, :new, testimonial_params) do
-    case Testimonials.create_testimonial(testimonial_params) do
+    inspect(socket.assigns.current_user.id)
+
+    case Testimonials.create_testimonial(testimonial_params, socket.assigns.current_user.id) do
       {:ok, testimonial} ->
         notify_parent({:saved, testimonial})
 

@@ -4,6 +4,8 @@ defmodule JesusthroughmaryWeb.TestimonialLive.Index do
   alias Jesusthroughmary.Testimonials
   alias Jesusthroughmary.Testimonials.Testimonial
 
+  on_mount {JesusthroughmaryWeb.UserAuth, :ensure_authenticated}
+
   @impl true
   def mount(_params, _session, socket) do
     {:ok, stream(socket, :testimonials, Testimonials.list_testimonials())}
@@ -33,7 +35,10 @@ defmodule JesusthroughmaryWeb.TestimonialLive.Index do
   end
 
   @impl true
-  def handle_info({JesusthroughmaryWeb.TestimonialLive.FormComponent, {:saved, testimonial}}, socket) do
+  def handle_info(
+        {JesusthroughmaryWeb.TestimonialLive.FormComponent, {:saved, testimonial}},
+        socket
+      ) do
     {:noreply, stream_insert(socket, :testimonials, testimonial)}
   end
 
