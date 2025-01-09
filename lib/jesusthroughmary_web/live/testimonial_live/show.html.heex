@@ -1,49 +1,58 @@
-<.header>
-  Testimonial {@testimonial.id}
-  <:subtitle>This is a testimonial record from your database.</:subtitle>
-  <:actions>
+<div class="space-y-6">
+  <!-- Header Section -->
+  <div class="flex items-center justify-between">
+    <h1 class="text-xl font-bold text-gray-800">{@testimonial.title}</h1>
     <.link patch={~p"/testimonials/#{@testimonial}/show/edit"} phx-click={JS.push_focus()}>
-      <.button>Edit testimonial</.button>
+      <.button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Edit
+      </.button>
     </.link>
-  </:actions>
-</.header>
-
-<div class="testimonial-item">
-  <div class="upvote-section">
-    <button phx-click="upvote" phx-value-id={@testimonial.id} class="upvote-button">
-      ⬆
-    </button>
-    <div class="likes-count">
-      {@testimonial.likes}
+  </div>
+  
+<!-- Testimonial Item -->
+  <div class="flex items-start bg-white shadow-md rounded-lg p-4 border border-gray-200">
+    <!-- Upvote Section -->
+    <%!-- <div class="flex flex-col items-center mr-4">
+      <button
+        phx-click="upvote"
+        phx-value-id={@testimonial.id}
+        class="text-gray-500 hover:text-orange-500 text-lg"
+      >
+        ⬆
+      </button>
+      <span class="text-gray-700 font-bold text-sm">
+        {@testimonial.likes}
+      </span>
+    </div> --%>
+    
+<!-- Content Section -->
+    <div class="flex-1">
+      <p class="text-gray-800 text-base">{@testimonial.message}</p>
+      <small class="text-gray-500 text-sm">{@testimonial.date}</small>
     </div>
   </div>
-  <div class="content-section">
-    <div class="testimonial-title">
-      <strong>{@testimonial.title}</strong>
-    </div>
-    <div class="testimonial-message">
-      {@testimonial.message}
-    </div>
-    <div class="testimonial-date">
-      <small>{@testimonial.date}</small>
-    </div>
+  
+<!-- Back Button -->
+  <div>
+    <.back navigate={~p"/testimonials"} class="text-blue-500 hover:underline">
+      Back to testimonials
+    </.back>
   </div>
+  
+<!-- Modal -->
+  <.modal
+    :if={@live_action == :edit}
+    id="testimonial-modal"
+    show
+    on_cancel={JS.patch(~p"/testimonials/#{@testimonial}")}
+  >
+    <.live_component
+      module={JesusthroughmaryWeb.TestimonialLive.FormComponent}
+      id={@testimonial.id}
+      title={@page_title}
+      action={@live_action}
+      testimonial={@testimonial}
+      patch={~p"/testimonials/#{@testimonial}"}
+    />
+  </.modal>
 </div>
-
-<.back navigate={~p"/testimonials"}>Back to testimonials</.back>
-
-<.modal
-  :if={@live_action == :edit}
-  id="testimonial-modal"
-  show
-  on_cancel={JS.patch(~p"/testimonials/#{@testimonial}")}
->
-  <.live_component
-    module={JesusthroughmaryWeb.TestimonialLive.FormComponent}
-    id={@testimonial.id}
-    title={@page_title}
-    action={@live_action}
-    testimonial={@testimonial}
-    patch={~p"/testimonials/#{@testimonial}"}
-  />
-</.modal>
