@@ -20,7 +20,12 @@ defmodule Jesusthroughmary.Testimonials.Testimonial do
   @doc false
   def changeset(testimonial, attrs) do
     testimonial
-    |> cast(attrs, [:title, :message, :likes, :date, :user_id])
+    # Exclude :likes and :date
+    |> cast(attrs, [:title, :message, :user_id])
     |> validate_required([:title, :message, :user_id])
+    # Set date programmatically
+    |> put_change(:date, NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second))
+    # Ensure likes is set to 0 on creation
+    |> put_change(:likes, 0)
   end
 end

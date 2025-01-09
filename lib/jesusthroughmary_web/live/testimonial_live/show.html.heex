@@ -8,16 +8,36 @@
   </:actions>
 </.header>
 
-<.list>
-  <:item title="Title">{@testimonial.title}</:item>
-  <:item title="Message">{@testimonial.message}</:item>
-  <:item title="Likes">{@testimonial.likes}</:item>
-  <:item title="Date">{@testimonial.date}</:item>
-</.list>
+<div class="testimonial-item">
+  <div class="upvote-section">
+    <button phx-click="upvote" phx-value-id={@testimonial.id} class="upvote-button">
+      ⬆
+    </button>
+    <div class="likes-count">
+      {@testimonial.likes}
+    </div>
+  </div>
+  <div class="content-section">
+    <div class="testimonial-title">
+      <strong>{@testimonial.title}</strong>
+    </div>
+    <div class="testimonial-message">
+      {@testimonial.message}
+    </div>
+    <div class="testimonial-date">
+      <small>{@testimonial.date}</small>
+    </div>
+  </div>
+</div>
 
 <.back navigate={~p"/testimonials"}>Back to testimonials</.back>
 
-<.modal :if={@live_action == :edit} id="testimonial-modal" show on_cancel={JS.patch(~p"/testimonials/#{@testimonial}")}>
+<.modal
+  :if={@live_action == :edit}
+  id="testimonial-modal"
+  show
+  on_cancel={JS.patch(~p"/testimonials/#{@testimonial}")}
+>
   <.live_component
     module={JesusthroughmaryWeb.TestimonialLive.FormComponent}
     id={@testimonial.id}

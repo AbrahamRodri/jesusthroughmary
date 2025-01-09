@@ -21,8 +21,6 @@ defmodule JesusthroughmaryWeb.TestimonialLive.FormComponent do
       >
         <.input field={@form[:title]} type="text" label="Title" />
         <.input field={@form[:message]} type="text" label="Message" />
-        <.input field={@form[:likes]} type="number" label="Likes" />
-        <.input field={@form[:date]} type="datetime-local" label="Date" />
         <:actions>
           <.button phx-disable-with="Saving...">Save Testimonial</.button>
         </:actions>
