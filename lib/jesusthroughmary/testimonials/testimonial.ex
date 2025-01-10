@@ -13,6 +13,8 @@ defmodule Jesusthroughmary.Testimonials.Testimonial do
     belongs_to :user, Jesusthroughmary.Accounts.User
 
     has_many :comments, Jesusthroughmary.Comments.Comment
+    has_many :testimonial_upvotes, Jesusthroughmary.Content.TestimonialUpvote
+    has_many :upvoted_by, through: [:testimonial_upvotes, :user]
 
     timestamps()
   end
