@@ -20,4 +20,18 @@ defmodule Jesusthroughmary.TestimonialsFixtures do
 
     testimonial
   end
+
+  @doc """
+  Generate a testimonial_upvote.
+  """
+  def testimonial_upvote_fixture(attrs \\ %{}) do
+    {:ok, testimonial_upvote} =
+      attrs
+      |> Enum.into(%{
+
+      })
+      |> Jesusthroughmary.Testimonials.create_testimonial_upvote()
+
+    testimonial_upvote
+  end
 end

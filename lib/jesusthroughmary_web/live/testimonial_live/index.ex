@@ -1,4 +1,5 @@
 defmodule JesusthroughmaryWeb.TestimonialLive.Index do
+  alias JesusthroughmaryWeb.TestimonialLive
   use JesusthroughmaryWeb, :live_view
 
   alias Jesusthroughmary.Testimonials
@@ -29,9 +30,11 @@ defmodule JesusthroughmaryWeb.TestimonialLive.Index do
   end
 
   defp apply_action(socket, :index, _params) do
+    IO.inspect(Testimonials.list_testimonials(), label: "Testimonial")
+
     socket
     |> assign(:page_title, "Listing Testimonials")
-    |> assign(:testimonial, nil)
+    |> assign(:testimonial, Testimonials.list_testimonials())
   end
 
   @impl true

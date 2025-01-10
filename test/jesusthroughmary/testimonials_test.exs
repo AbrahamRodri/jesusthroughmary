@@ -62,4 +62,56 @@ defmodule Jesusthroughmary.TestimonialsTest do
       assert %Ecto.Changeset{} = Testimonials.change_testimonial(testimonial)
     end
   end
+
+  describe "testimonial_upvotes" do
+    alias Jesusthroughmary.Testimonials.TestimonialUpvote
+
+    import Jesusthroughmary.TestimonialsFixtures
+
+    @invalid_attrs %{}
+
+    test "list_testimonial_upvotes/0 returns all testimonial_upvotes" do
+      testimonial_upvote = testimonial_upvote_fixture()
+      assert Testimonials.list_testimonial_upvotes() == [testimonial_upvote]
+    end
+
+    test "get_testimonial_upvote!/1 returns the testimonial_upvote with given id" do
+      testimonial_upvote = testimonial_upvote_fixture()
+      assert Testimonials.get_testimonial_upvote!(testimonial_upvote.id) == testimonial_upvote
+    end
+
+    test "create_testimonial_upvote/1 with valid data creates a testimonial_upvote" do
+      valid_attrs = %{}
+
+      assert {:ok, %TestimonialUpvote{} = testimonial_upvote} = Testimonials.create_testimonial_upvote(valid_attrs)
+    end
+
+    test "create_testimonial_upvote/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Testimonials.create_testimonial_upvote(@invalid_attrs)
+    end
+
+    test "update_testimonial_upvote/2 with valid data updates the testimonial_upvote" do
+      testimonial_upvote = testimonial_upvote_fixture()
+      update_attrs = %{}
+
+      assert {:ok, %TestimonialUpvote{} = testimonial_upvote} = Testimonials.update_testimonial_upvote(testimonial_upvote, update_attrs)
+    end
+
+    test "update_testimonial_upvote/2 with invalid data returns error changeset" do
+      testimonial_upvote = testimonial_upvote_fixture()
+      assert {:error, %Ecto.Changeset{}} = Testimonials.update_testimonial_upvote(testimonial_upvote, @invalid_attrs)
+      assert testimonial_upvote == Testimonials.get_testimonial_upvote!(testimonial_upvote.id)
+    end
+
+    test "delete_testimonial_upvote/1 deletes the testimonial_upvote" do
+      testimonial_upvote = testimonial_upvote_fixture()
+      assert {:ok, %TestimonialUpvote{}} = Testimonials.delete_testimonial_upvote(testimonial_upvote)
+      assert_raise Ecto.NoResultsError, fn -> Testimonials.get_testimonial_upvote!(testimonial_upvote.id) end
+    end
+
+    test "change_testimonial_upvote/1 returns a testimonial_upvote changeset" do
+      testimonial_upvote = testimonial_upvote_fixture()
+      assert %Ecto.Changeset{} = Testimonials.change_testimonial_upvote(testimonial_upvote)
+    end
+  end
 end
