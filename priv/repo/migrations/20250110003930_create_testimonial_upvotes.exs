@@ -3,13 +3,14 @@ defmodule Jesusthroughmary.Repo.Migrations.CreateTestimonialUpvotes do
 
   def change do
     create table(:testimonial_upvotes) do
-      add :user_id, references(:users, on_delete: :nothing)
-      add :testimonial_id, references(:testimonials, on_delete: :nothing)
+      add :user_id, references(:users, on_delete: :delete_all), null: false
+      add :testimonial_id, references(:testimonials, on_delete: :delete_all), null: false
 
       timestamps(type: :utc_datetime)
     end
 
-    create index(:testimonial_upvotes, [:user_id])
-    create index(:testimonial_upvotes, [:testimonial_id])
+    create unique_index(:testimonial_upvotes, [:user_id, :testimonial_id],
+             name: :unique_user_testimonial_upvote
+           )
   end
 end

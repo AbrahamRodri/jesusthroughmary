@@ -1,5 +1,4 @@
 defmodule JesusthroughmaryWeb.TestimonialLive.Index do
-  alias JesusthroughmaryWeb.TestimonialLive
   use JesusthroughmaryWeb, :live_view
 
   alias Jesusthroughmary.Testimonials

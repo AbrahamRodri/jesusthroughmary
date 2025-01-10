@@ -197,4 +197,36 @@ defmodule Jesusthroughmary.Testimonials do
   def change_testimonial_upvote(%TestimonialUpvote{} = testimonial_upvote, attrs \\ %{}) do
     TestimonialUpvote.changeset(testimonial_upvote, attrs)
   end
+
+  def upvote_testimonial(attrs) do
+    %TestimonialUpvote{}
+    |> TestimonialUpvote.changeset(attrs)
+    |> Repo.insert()
+    |> case do
+      {:ok, upvote} ->
+        {:ok, upvote}
+
+      {:error, changeset} ->
+        if changeset.errors[:user_id] do
+          {:error, :already_upvoted}
+        else
+          {:error, changeset}
+        end
+    end
+  end
+
+  def remove_upvote(user_id, testimonial_id) do
+    case Repo.get_by(TestimonialUpvote, user_id: user_id, testimonial_id: testimonial_id) do
+      nil -> {:error, :not_found}
+      upvote -> Repo.delete(upvote)
+    end
+  end
+
+  def count_upvotes(testimonial_id) do
+    Repo.aggregate(
+      from(u in TestimonialUpvote, where: u.testimonial_id == ^testimonial_id),
+      :count,
+      :id
+    )
+  end
 end
