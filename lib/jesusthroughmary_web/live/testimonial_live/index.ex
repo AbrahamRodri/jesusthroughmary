@@ -34,7 +34,7 @@ defmodule JesusthroughmaryWeb.TestimonialLive.Index do
 
     socket
     |> assign(:page_title, "Listing Testimonials")
-    |> assign(:testimonial, Testimonials.list_testimonials())
+    |> assign(:testimonial, nil)
   end
 
   @impl true
