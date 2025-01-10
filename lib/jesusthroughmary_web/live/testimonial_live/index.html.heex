@@ -1,0 +1,62 @@
+<div class="testimonials-list space-y-4">
+  <div
+    :for={{_id, testimonial} <- @streams.testimonials}
+    id={_id}
+    class="flex items-start p-4 border-b bg-white shadow-sm rounded-lg"
+  >
+    
+<!-- Content Section -->
+    <div class="flex-1">
+      <div class="flex justify-between">
+        <h3 class="font-bold text-lg">
+          <a href={~p"/testimonials/#{testimonial}"} class="hover:underline">
+            {testimonial.title}
+          </a>
+        </h3>
+        <div class="text-gray-500 text-sm">{testimonial.date}</div>
+      </div>
+      <p class="text-gray-700 mt-1">{testimonial.message}</p>
+      
+<!-- Actions -->
+      <div class="mt-2 text-sm space-x-4">
+        <a href={~p"/testimonials/#{testimonial}/edit"} class="text-blue-500 hover:underline">
+          Edit
+        </a>
+        <a
+          phx-click={JS.push("delete", value: %{id: testimonial.id})}
+          data-confirm="Are you sure?"
+          class="text-red-500 hover:underline"
+        >
+          Delete
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Testimonial Button -->
+<div class="mt-4">
+  <.link patch={~p"/testimonials/new"}>
+    <.button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+      New Testimonial
+    </.button>
+  </.link>
+</div>
+
+<!-- Modal -->
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="testimonial-modal"
+  show
+  on_cancel={JS.patch(~p"/testimonials")}
+>
+  <.live_component
+    module={JesusthroughmaryWeb.TestimonialLive.FormComponent}
+    id={@testimonial.id || :new}
+    title={@page_title}
+    action={@live_action}
+    current_user={@current_user}
+    testimonial={@testimonial}
+    patch={~p"/testimonials"}
+  />
+</.modal>

@@ -81,6 +81,13 @@ defmodule JesusthroughmaryWeb.Router do
       on_mount: [{JesusthroughmaryWeb.UserAuth, :ensure_authenticated}] do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
+
+      live "/testimonials", TestimonialLive.Index, :index
+      live "/testimonials/new", TestimonialLive.Index, :new
+      live "/testimonials/:id/edit", TestimonialLive.Index, :edit
+
+      live "/testimonials/:id", TestimonialLive.Show, :show
+      live "/testimonials/:id/show/edit", TestimonialLive.Show, :edit
     end
   end
 

@@ -1,0 +1,58 @@
+<div class="space-y-6">
+  <!-- Header Section -->
+  <div class="flex items-center justify-between">
+    <h1 class="text-xl font-bold text-gray-800">{@testimonial.title}</h1>
+    <.link patch={~p"/testimonials/#{@testimonial}/show/edit"} phx-click={JS.push_focus()}>
+      <.button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Edit
+      </.button>
+    </.link>
+  </div>
+  
+<!-- Testimonial Item -->
+  <div class="flex items-start bg-white shadow-md rounded-lg p-4 border border-gray-200">
+    <!-- Upvote Section -->
+    <div class="flex flex-col items-center mr-4">
+      <button
+        phx-click="upvote"
+        phx-value-id={@testimonial.id}
+        class="text-gray-500 hover:text-orange-500 text-lg"
+      >
+        ⬆
+      </button>
+      <span class="text-gray-700 font-bold text-sm">
+        {@likes}
+      </span>
+    </div>
+    
+<!-- Content Section -->
+    <div class="flex-1">
+      <p class="text-gray-800 text-base">{@testimonial.message}</p>
+      <small class="text-gray-500 text-sm">{@testimonial.date}</small>
+    </div>
+  </div>
+  
+<!-- Back Button -->
+  <div>
+    <.back navigate={~p"/testimonials"} class="text-blue-500 hover:underline">
+      Back to testimonials
+    </.back>
+  </div>
+  
+<!-- Modal -->
+  <.modal
+    :if={@live_action == :edit}
+    id="testimonial-modal"
+    show
+    on_cancel={JS.patch(~p"/testimonials/#{@testimonial}")}
+  >
+    <.live_component
+      module={JesusthroughmaryWeb.TestimonialLive.FormComponent}
+      id={@testimonial.id}
+      title={@page_title}
+      action={@live_action}
+      testimonial={@testimonial}
+      patch={~p"/testimonials/#{@testimonial}"}
+    />
+  </.modal>
+</div>

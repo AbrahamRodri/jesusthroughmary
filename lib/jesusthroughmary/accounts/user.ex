@@ -9,6 +9,11 @@ defmodule Jesusthroughmary.Accounts.User do
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
 
+    has_many :testimonials, Jesusthroughmary.Testimonials.Testimonial, on_delete: :nilify_all
+    has_many :comments, Jesusthroughmary.Comments.Comment, on_delete: :nilify_all
+    has_many :testimonial_upvotes, Jesusthroughmary.Testimonials.TestimonialUpvote
+    has_many :upvoted_testimonials, through: [:testimonial_upvotes, :testimonial]
+
     timestamps(type: :utc_datetime)
   end
 
