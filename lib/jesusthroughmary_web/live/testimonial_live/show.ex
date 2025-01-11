@@ -26,12 +26,18 @@ defmodule JesusthroughmaryWeb.TestimonialLive.Show do
            testimonial_id: String.to_integer(testimonial_id)
          }) do
       {:ok, _upvote} ->
-        {:noreply, socket |> put_flash(:info, "You upvoted the testimonial!")}
+        # Fetch updated upvotes count and testimonial data
+        updated_testimonial = Testimonials.get_testimonial!(testimonial_id)
+        updated_likes = Testimonials.count_upvotes(testimonial_id)
 
-      {:error, _changeset} ->
+        # Reassign the updated testimonial and likes count
         {:noreply,
          socket
-         |> put_flash(:error, "Unable to upvote. You may have already upvoted this testimonial.")}
+         |> assign(:testimonial, updated_testimonial)
+         |> assign(:likes, updated_likes)}
+
+      {:error, _changeset} ->
+        {:noreply, socket |> put_flash(:error, "Unable to upvote.")}
     end
   end
 

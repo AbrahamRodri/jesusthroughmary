@@ -8,7 +8,8 @@ defmodule JesusthroughmaryWeb.TestimonialLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :testimonials, Testimonials.list_testimonials())}
+    # Assign the list of testimonials on mount
+    {:ok, assign(socket, :testimonials, Testimonials.list_testimonials())}
   end
 
   @impl true
@@ -29,8 +30,6 @@ defmodule JesusthroughmaryWeb.TestimonialLive.Index do
   end
 
   defp apply_action(socket, :index, _params) do
-    IO.inspect(Testimonials.list_testimonials(), label: "Testimonial")
-
     socket
     |> assign(:page_title, "Listing Testimonials")
     |> assign(:testimonial, nil)
@@ -41,14 +40,24 @@ defmodule JesusthroughmaryWeb.TestimonialLive.Index do
         {JesusthroughmaryWeb.TestimonialLive.FormComponent, {:saved, testimonial}},
         socket
       ) do
-    {:noreply, stream_insert(socket, :testimonials, testimonial)}
+    # Add the new testimonial to the current list of testimonials
+    updated_testimonials = [testimonial | socket.assigns.testimonials]
+    {:noreply, assign(socket, :testimonials, updated_testimonials)}
   end
 
   @impl true
   def handle_event("delete", %{"id" => id}, socket) do
     testimonial = Testimonials.get_testimonial!(id)
-    {:ok, _} = Testimonials.delete_testimonial(testimonial)
 
-    {:noreply, stream_delete(socket, :testimonials, testimonial)}
+    # Delete the testimonial and update the list of testimonials
+    case Testimonials.delete_testimonial(testimonial) do
+      {:ok, _} ->
+        updated_testimonials = Testimonials.list_testimonials()
+
+        {:noreply, assign(socket, :testimonials, updated_testimonials)}
+
+      {:error, _reason} ->
+        {:noreply, socket |> put_flash(:error, "Unable to delete testimonial.")}
+    end
   end
 end

@@ -5,7 +5,6 @@ defmodule Jesusthroughmary.Testimonials.Testimonial do
   schema "testimonials" do
     field :title, :string
     field :message, :string
-    field :likes, :integer, default: 0
 
     field :date, :naive_datetime,
       default: NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second)
