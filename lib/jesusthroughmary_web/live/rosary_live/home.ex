@@ -7,29 +7,33 @@ defmodule JesusthroughmaryWeb.RosaryLive.Home do
 
   def render(assigns) do
     ~H"""
-    <div class="max-w-4xl mx-auto py-8 px-4">
-      <h1 class="text-3xl font-bold mb-8">The Holy Rosary</h1>
+    <div class="">
+      <section class="text-center mb-12">
+        <div class="hero-image flex flex-col items-center justify-center">
+          <h1 class="text-white">The Holy Rosary</h1>
+        </div>
+      </section>
 
-      <div class="grid gap-6">
+      <section class="section-body mb-12 bg-yellow-50 mb-12 p-6 rounded-lg shadow-md">
         <!-- Section 1: Introduction -->
-        <div class="block p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-          <h2 class="text-xl font-semibold mb-4">What is the Rosary?</h2>
-          <p class="text-gray-700 mb-4">
+        <div class="">
+          <h2 class="">What is the Rosary?</h2>
+          <p class="">
             The Rosary is a sacred prayer in the Catholic Church, given to us by the Blessed Virgin Mary.
             It is a meditative devotion that guides us through the mysteries of Christ's life, death, and resurrection.
           </p>
-          <p class="text-gray-700 mb-4">
+          <p class="">
             The word "Rosary" means "crown of roses." When you pray the Rosary, you offer a spiritual bouquet of love and devotion to Our Blessed Mother, who intercedes for us before God.
           </p>
         </div>
         
     <!-- Section 2: Structure of the Rosary -->
-        <div class="block p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-          <h2 class="text-xl font-semibold mb-4">Structure of the Rosary</h2>
-          <p class="text-gray-700 mb-4">
+        <div class="">
+          <h2 class="">Structure of the Rosary</h2>
+          <p class="">
             The Rosary is composed of five decades, each focusing on a specific mystery of Christ's life. A complete Rosary consists of 20 decades, divided into four sets of mysteries:
           </p>
-          <ul class="list-disc list-inside text-gray-700 mb-4">
+          <ul class="list-disc list-inside mb-4">
             <li><strong>Joyful Mysteries</strong>: The Annunciation, the Visitation, and more.</li>
             <li>
               <strong>Sorrowful Mysteries</strong>: The Agony in the Garden, the Crucifixion, and others.
@@ -44,12 +48,12 @@ defmodule JesusthroughmaryWeb.RosaryLive.Home do
         </div>
         
     <!-- Section 3: How to Pray the Rosary -->
-        <div class="block p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-          <h2 class="text-xl font-semibold mb-4">How to Pray the Rosary</h2>
-          <p class="text-gray-700 mb-4">
+        <div class="">
+          <h2 class="">How to Pray the Rosary</h2>
+          <p class="">
             To begin, make the Sign of the Cross and recite the Apostles' Creed. This is followed by an Our Father, three Hail Marys for faith, hope, and charity, and a Glory Be. Then proceed to the decades:
           </p>
-          <ul class="list-disc list-inside text-gray-700 mb-4">
+          <ul class="list-disc list-inside mb-4">
             <li>Announce the mystery and meditate on it while praying one Our Father.</li>
             <li>Pray ten Hail Marys while continuing your meditation.</li>
             <li>Conclude with a Glory Be and, optionally, the Fatima Prayer.</li>
@@ -60,12 +64,12 @@ defmodule JesusthroughmaryWeb.RosaryLive.Home do
         </div>
         
     <!-- Section 4: Subtopics to Explore -->
-        <div class="block p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-          <h2 class="text-xl font-semibold mb-4">Explore More</h2>
-          <p class="text-gray-700 mb-4">
+        <div class="">
+          <h2 class="">Explore More</h2>
+          <p class="">
             Deepen your devotion and understanding of the Rosary with these topics:
           </p>
-          <ul class="list-disc list-inside text-gray-700 mb-4">
+          <ul class="list-disc list-inside mb-4">
             <li>
               <a href="/how-to-meditate.html" class="text-blue-500 hover:underline">
                 How to Meditate with the Rosary
@@ -98,16 +102,16 @@ defmodule JesusthroughmaryWeb.RosaryLive.Home do
         </div>
         
     <!-- Section 5: Benefits of the Rosary -->
-        <div class="block p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-          <h2 class="text-xl font-semibold mb-4">Benefits of Praying the Rosary</h2>
-          <p class="text-gray-700 mb-4">
+        <div class="">
+          <h2 class="">Benefits of Praying the Rosary</h2>
+          <p class="">
             The Rosary brings many spiritual benefits, including peace of mind, greater focus in prayer, and a stronger connection to Christ through Mary. It is also a powerful tool for spiritual warfare, offering protection and grace.
           </p>
           <p class="text-gray-700">
             By praying the Rosary daily, we grow in holiness and fulfill Mary's request at Fatima: "Pray the Rosary every day."
           </p>
         </div>
-      </div>
+      </section>
     </div>
     """
   end
