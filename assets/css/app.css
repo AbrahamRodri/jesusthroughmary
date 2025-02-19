@@ -3,3 +3,55 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+/* Font Declarations (Include all formats for best compatibility) */
+
+
+@layer base {
+    @font-face {
+        font-family: 'Trajan Pro';
+        src:
+          url('/fonts/TrajanPro-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      
+      @font-face {
+        font-family: 'Trajan Pro';
+        src:
+             url('/fonts/TrajanPro-bold.otf') format('opentype');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+}
+/* Base Styles */
+body {
+  font-family: sans-serif;
+  color: #444; /* Dark Gray body text */
+  line-height: 1.6; /* Off-white background */
+}
+
+h1 {
+  font-family: 'Trajan Pro'; /* Trajan Pro for headings */
+  font-weight: bold;
+}
+
+h2 {
+  font-family: 'Trajan Pro';
+  font-weight: bold;
+}
+
+h3 {
+  font-family: 'Trajan Pro';
+  font-weight: 600; /* Semi-bold */
+
+}
+
+
+/* Example Button Styles (Customize as needed) */
+
+
+/* Utility Classes (If needed) */
+/* Any other custom styles */
