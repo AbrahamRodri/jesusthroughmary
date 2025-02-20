@@ -7,7 +7,7 @@
       name="query"
       value={@search_query}
       placeholder="Search apparitions..."
-      class="w-full p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500"
+      class="w-full p-3 border rounded-lg shadow-sm"
       phx-debounce="300"
     />
   </form>
@@ -16,7 +16,7 @@
     <%= for apparition <- @filtered_apparitions do %>
       <.link
         navigate={~p"/apparitions/#{apparition.id}"}
-        class="block p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow"
+        class="block p-6 bg-yellow-50  rounded-lg shadow hover:shadow-md transition-shadow"
       >
         <div class="flex items-start gap-4">
           <img

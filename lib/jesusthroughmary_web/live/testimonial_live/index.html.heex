@@ -16,27 +16,32 @@
         </div>
         <p class="text-gray-700 mt-1">{testimonial.message}</p>
         
-<!-- Actions -->
-        <div class="mt-2 text-sm space-x-4">
-          <a href={~p"/testimonials/#{testimonial.id}/edit"} class="text-blue-500 hover:underline">
-            Edit
-          </a>
-          <a
-            phx-click="delete"
-            phx-value-id={testimonial.id}
-            data-confirm="Are you sure?"
-            class="text-red-500 hover:underline"
-          >
-            Delete
-          </a>
-        </div>
+<!-- Actions (Should only visible to owner) -->
+        <%= if @current_user.id == testimonial.user_id do %>
+          <div class="mt-2 text-sm space-x-4">
+            <a
+              href={~p"/testimonials/#{testimonial.id}/edit"}
+              class="text-blue-500 hover:underline"
+            >
+              Edit
+            </a>
+            <a
+              phx-click="delete"
+              phx-value-id={testimonial.id}
+              data-confirm="Are you sure?"
+              class="text-red-500 hover:underline"
+            >
+              Delete
+            </a>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
 </div>
 
 <!-- New Testimonial Button -->
-<div class="mt-4">
+<div class="m-4 flex justify-end ">
   <.link patch={~p"/testimonials/new"}>
     <.button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
       New Testimonial
